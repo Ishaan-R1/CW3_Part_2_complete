@@ -30,54 +30,7 @@
       <strong class="testConsole">HTTPS Test: </strong>
       <a v-bind:href="awsServerURL" target="_blank">link</a>
     </div>
-    <!-- <div class="order">
-        <p>Order:<br></p>
-        <form>
-            <input type="radio" id="a" name="fav_language" value="Ascending" v-on:click="ascend()">
-            <label for="html">Ascending</label><br>
-            <input type="radio" id="d" name="fav_language" value="Descending" v-on:click="descend()">
-            <label for="css">Descending</label><br>
-        </form>
-      </div> -->
-
-      <!-- <form>
-        <div class="container2">
-          <div class="sort">
-            <p>Sort By:<br></p>
-            <div v-if="this.sortOrder.order === 'ascend'">
-              <input type="radio" id="subject" name="fav_language" value="Subject" v-model="radioBtn"
-                v-on:click="sort('subject')">
-                  <label for="subject">Subject</label><br>
-                <input type="radio" id="subject" name="fav_language" value="Location" v-model="radioBtn"
-                v-on:click="sort('location')">
-                <label for="subject">Location</label><br>
-                <input type="radio" id="subject" name="fav_language" value="Price" v-model="radioBtn"
-                v-on:click="sort('price')">
-                <label for="subject">Price</label><br>
-                <input type="radio" id="subject" name="fav_language" value="Availability" v-model="radioBtn"
-                v-on:click="sort('spaces')">
-                <label for="subject">Availability</label><br>
-                
-            </div>
-            <div v-else>
-              <input type="radio" id="subject" name="fav_language" value="Subject" v-model="radioBtn"
-                v-on:click="sort2('subject')">
-                <label for="subject">Subject</label><br>
-              <input type="radio" id="subject" name="fav_language" value="Location" v-model="radioBtn"
-                v-on:click="sort2('location')">
-                <label for="subject">Location</label><br>
-                <input type="radio" id="subject" name="fav_language" value="Price" v-model="radioBtn"
-                v-on:click="sort2('price')">
-                <label for="subject">Price</label><br>
-                <input type="radio" id="subject" name="fav_language" value="Availability" v-model="radioBtn"
-                v-on:click="sort2('spaces')">
-                <label for="subject">Availability</label><br>
-            </div>
-          </div>
-        </div>
-
-      </form> -->
-
+   
     <main>
       <component
         :is="currentView"
@@ -95,9 +48,6 @@
         :descend="descend"
       ></component>
     </main>
-    <!-- <main>
-      <TheWelcome />
-    </main> -->
   </div>
 </template>
 <script>
