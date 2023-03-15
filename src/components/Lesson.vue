@@ -1,7 +1,53 @@
 <template>
+  <div>
+    <div class="order">
+        <p>Order:<br></p>
+        <form>
+            <input type="radio" id="a" name="fav_language" value="Ascending" v-on:click="ascend()">
+            <label for="html">Ascending</label><br>
+            <input type="radio" id="d" name="fav_language" value="Descending" v-on:click="descend()">
+            <label for="css">Descending</label><br>
+        </form>
+    </div>
+    <form>
+      <div class="container2">
+        <div class="sort">
+          <p>Sort By:<br></p>
+          <div v-if="this.sortOrder.order === 'ascend'">
+            <input type="radio" id="subject" name="fav_language" value="Subject" v-model="radioBtn"
+                v-on:click="sort('subject')">
+                  <label for="subject">Subject</label><br>
+                <input type="radio" id="subject" name="fav_language" value="Location" v-model="radioBtn"
+                v-on:click="sort('location')">
+                <label for="subject">Location</label><br>
+                <input type="radio" id="subject" name="fav_language" value="Price" v-model="radioBtn"
+                v-on:click="sort('price')">
+                <label for="subject">Price</label><br>
+                <input type="radio" id="subject" name="fav_language" value="Availability" v-model="radioBtn"
+                v-on:click="sort('spaces')">
+                <label for="subject">Availability</label><br>
+          </div>
+          <div v-else>
+            <input type="radio" id="subject" name="fav_language" value="Subject" v-model="radioBtn"
+                v-on:click="sort2('subject')">
+                <label for="subject">Subject</label><br>
+              <input type="radio" id="subject" name="fav_language" value="Location" v-model="radioBtn"
+                v-on:click="sort2('location')">
+                <label for="subject">Location</label><br>
+                <input type="radio" id="subject" name="fav_language" value="Price" v-model="radioBtn"
+                v-on:click="sort2('price')">
+                <label for="subject">Price</label><br>
+                <input type="radio" id="subject" name="fav_language" value="Availability" v-model="radioBtn"
+                v-on:click="sort2('spaces')">
+                <label for="subject">Availability</label><br>
+          </div>
+        </div>
+      </div>
+
+    </form>
+
   <div class="container">
     <!-- <h1>Welcome to Product List</h1> -->
-
     <!-- For front end search =  searchFunction -->
     <div class="subject" v-for="sub in sortedProducts">
       <p>Subject: {{ sub.subject }}</p>
@@ -16,21 +62,21 @@
       <button class="addtoCartBtn2 disabled" disabled='disabled' id="addtoCartBtn"
             v-on:click="decrementSpaces(); addToCart(sub); btn(sub);" v-else>
             Add to cart
-          </button>
-      <!-- <button class="addtoCartBtn" id="addtoCartBtn"
-            v-on:click="decrementSpaces(); addToCart(sub); btn(sub); updateSpaces2(sub.spaces, sub._id); getLessonID(sub._id);"
-            v-if="noMoreSpaces(sub)">
-            Add to cart
-          </button> -->
+      </button>
     </div>
   </div>
+</div>
 </template>
 <script>
 export default {
   name: "Lesson",
-  props: ["sortedProducts", "cart", "getID", "getSpaces"],
+  props: ["sortedProducts", "cart", "getID", "getSpaces", "sortOrder", "ascend", "descend"],
   data() {
-    return {};
+    return {
+      radioBtn: {
+        option: "",
+      },
+    };
   },
   methods: {
     noMoreSpaces: function (sub) {
@@ -51,16 +97,14 @@ export default {
       }
       console.log(sub.spaces);
     },
-    // updateSpaces2(spacesNum, id) {
-    //   // Fetch to update lesson spaces with PUT - ID is taken once user clicks on specific lesson
-    //   this.getID.push(id);
-    //   this.getSpaces.push(spacesNum);
-    // },
     addToCart: function (product) {
-      // this.cart.push(product); // push the relevant subject to store in the cart array
-      // console.log(this.cart);
-      // console.log("Added to Arr " + this.cart.length);
       this.$emit("add-item-to-cart", product);
+    },
+    sort: function (option) {
+      this.$emit("sort-item", option);
+    },
+    sort2: function (option) {
+      this.$emit("sort-item2", option);
     },
   },
 };
