@@ -207,6 +207,7 @@ input {
 .container2 {
   position: relative;
   top: 45px;
+  width:fit-content;
 }
 /* Style sort section of radio buttons */
 .sort {
@@ -225,7 +226,11 @@ input {
   height: 40px;
   width: 150px;
   font-size: 15px;
-  border-radius: 10px 0px 0px 10px;
+  border-radius: 0px 10px 10px 0px;
+}
+.testConsoleBtn:hover {
+  cursor: pointer;
+  opacity: 0.8;
 }
 .testConsole {
   height: 30px;
